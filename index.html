@@ -75,7 +75,9 @@
   .note{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#cfcfcf}
   .note b{color:var(--yellow);font-weight:500}
   .timer{color:var(--yellow)}
-  .skip{display:inline-block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;color:#aaa;text-decoration:underline}
+  .skip{margin-top:18px}
+  .skip .cta{font-size:clamp(16px,1.9vw,24px);padding:clamp(13px,1.6vw,18px) clamp(22px,3vw,40px)}
+  .skip-note{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#bbb}
 
   @media (max-width:640px){
     .opts{grid-template-columns:1fr;gap:8px}
@@ -86,6 +88,7 @@
     .bg{background-position:62% 20%}
     .kicker{font-size:10px;letter-spacing:.18em}
   }
+  @media (max-width:640px){.opts{margin-top:14px}.dots{margin-top:10px}.skip{margin-top:12px}h1{font-size:24px}.sub{font-size:13px}}
   @media (max-height:640px){.sub{display:none}.opts{margin-top:14px}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
@@ -156,7 +159,17 @@
       <div class="note"><b>100% FREE</b> · Slot reserved for <span class="timer" id="timer">04:59</span></div>
     </section>
 
-    <a href="#go2offer" class="skip" id="skip">Skip &amp; play free now</a>
+    <div class="skip" id="skip">
+      <div class="cta-wrap" style="margin-top:0">
+        <div class="chev"><i></i><i></i><i></i></div>
+        <a href="#go2offer" class="cta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4.5 10 3.4v7.8H2V4.5Zm0 15 8 1.1v-7.7H2v6.6Zm9 1.2 11 1.5v-9.3H11v7.8Zm0-17.4v7.9h11V1.8L11 3.3Z"/></svg>
+          Play Free on Windows
+        </a>
+        <div class="chev r"><i></i><i></i><i></i></div>
+      </div>
+      <div class="skip-note">Already decided? Skip the quiz &amp; play now</div>
+    </div>
   </div>
 </main>
 
