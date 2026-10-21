@@ -29,7 +29,7 @@
   .tag i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e01a1a;margin-right:6px;animation:blink 1s infinite}
   @keyframes blink{50%{opacity:.2}}
 
-  .panel{position:relative;z-index:4;width:min(760px,92vw);margin-bottom:clamp(20px,6vh,60px);text-align:center}
+  .panel{position:relative;z-index:4;width:min(1000px,94vw);margin-bottom:clamp(20px,6vh,60px);text-align:center}
   .step{display:none;animation:in .35s ease}
   .step.active{display:block}
   @keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
@@ -62,13 +62,13 @@
   /* CTA */
   .cta-wrap{margin-top:24px;display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,24px)}
   .chev{display:flex;gap:2px}
-  .chev i{display:block;width:clamp(14px,1.8vw,22px);height:clamp(26px,3.2vw,40px);background:var(--yellow);clip-path:polygon(0 0,45% 0,100% 50%,45% 100%,0 100%,55% 50%);opacity:.2;animation:chev 1.2s infinite}
+  .chev i{display:block;width:clamp(16px,2.2vw,30px);height:clamp(30px,4.2vw,56px);background:var(--yellow);clip-path:polygon(0 0,45% 0,100% 50%,45% 100%,0 100%,55% 50%);opacity:.2;animation:chev 1.2s infinite}
   .chev i:nth-child(2){animation-delay:.15s}.chev i:nth-child(3){animation-delay:.3s}
   .chev.r{transform:scaleX(-1)}
   @keyframes chev{0%,100%{opacity:.15}40%{opacity:1}}
-  .cta{position:relative;display:inline-flex;align-items:center;gap:14px;font-family:'Oxanium',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
-    font-size:clamp(18px,2.4vw,30px);color:var(--black);background:var(--yellow);padding:clamp(16px,2vw,22px) clamp(24px,3.6vw,50px);white-space:nowrap;overflow:hidden;
-    clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);animation:pulse 1.8s infinite;transition:transform .15s}
+  .cta{position:relative;display:inline-flex;align-items:center;gap:18px;font-family:'Oxanium',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.06em;
+    font-size:clamp(22px,3.4vw,44px);color:var(--black);background:var(--yellow);padding:clamp(20px,2.8vw,32px) clamp(30px,5vw,80px);white-space:nowrap;overflow:hidden;
+    clip-path:polygon(24px 0,100% 0,100% calc(100% - 24px),calc(100% - 24px) 100%,0 100%,0 24px);animation:pulse 1.8s infinite;transition:transform .15s}
   .cta:hover{transform:scale(1.04)}
   .cta::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.8),transparent);transform:skewX(-20deg);animation:shine 2.4s infinite}
   @keyframes shine{0%{left:-60%}60%,100%{left:130%}}
@@ -77,9 +77,6 @@
   .note{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#cfcfcf}
   .note b{color:var(--yellow);font-weight:500}
   .timer{color:var(--yellow)}
-  .skip{margin-top:18px}
-  .skip .cta{font-size:clamp(16px,1.9vw,24px);padding:clamp(13px,1.6vw,18px) clamp(22px,3vw,40px)}
-  .skip-note{margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#bbb}
 
   @media (max-width:640px){
     .opts{grid-template-columns:1fr;gap:8px}
@@ -90,7 +87,7 @@
     .bg{background-position:62% 20%}
     .kicker{font-size:10px;letter-spacing:.18em}
   }
-  @media (max-width:640px){.opts{margin-top:14px}.dots{margin-top:10px}.skip{margin-top:12px}h1{font-size:24px}.sub{font-size:13px}}
+  @media (max-width:640px){h1{font-size:28px}.sub{font-size:15px}.cta{font-size:20px;gap:12px;padding:20px 26px}}
   @media (max-height:640px){.sub{display:none}.opts{margin-top:14px}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
@@ -106,47 +103,7 @@
 
   <div class="panel">
 
-    <!-- STEP 1 -->
-    <section class="step active" data-step="1">
-      <div class="kicker">// Free on PC</div>
-      <h1>What do you <span>love</span> to play?</h1>
-      <p class="sub">Pick one and get Arknights: Endfield free.</p>
-      <div class="opts">
-        <button class="opt" data-next><small>A</small><b>Fighting</b><span>Fast action</span></button>
-        <button class="opt" data-next><small>B</small><b>Building</b><span>Build &amp; craft</span></button>
-        <button class="opt" data-next><small>C</small><b>Exploring</b><span>Open world</span></button>
-      </div>
-      <div class="dots"><i class="on"></i><i></i><i></i></div>
-    </section>
-
-    <!-- STEP 2 -->
-    <section class="step" data-step="2">
-      <div class="kicker">// Last step</div>
-      <h1>Pick your <span>hero</span></h1>
-      <p class="sub">Who leads your team?</p>
-      <div class="opts">
-        <button class="opt" data-next><small>01</small><b>Attacker</b><span>Big damage</span></button>
-        <button class="opt" data-next><small>02</small><b>Strategist</b><span>Smart plays</span></button>
-        <button class="opt" data-next><small>03</small><b>Defender</b><span>Never falls</span></button>
-      </div>
-      <div class="dots"><i class="on"></i><i class="on"></i><i></i></div>
-    </section>
-
-    <!-- STEP 3: scan -->
-    <section class="step" data-step="3">
-      <div class="kicker">// Loading</div>
-      <h1>Getting your <span>game</span> ready...</h1>
-      <div class="term" id="term">
-        <div>&gt; Choice saved ............ <span class="ok">OK</span></div>
-        <div>&gt; Hero ready .............. <span class="ok">OK</span></div>
-        <div>&gt; Works on your PC ........ <span class="ok">YES</span></div>
-        <div>&gt; Price ................... <span class="ok">FREE</span></div>
-      </div>
-      <div class="bar"><i id="bar"></i></div>
-    </section>
-
-    <!-- STEP 4: CTA -->
-    <section class="step" data-step="4">
+    <section class="step active">
       <div class="kicker">// Ready</div>
       <h1>Your game is <span>ready!</span></h1>
       <p class="sub">Click below and play Arknights: Endfield free.</p>
@@ -160,41 +117,13 @@
       </div>
       <div class="note"><b>100% FREE</b> · Offer ends in <span class="timer" id="timer">04:59</span></div>
     </section>
-
-    <div class="skip" id="skip">
-      <div class="cta-wrap" style="margin-top:0">
-        <div class="chev"><i></i><i></i><i></i></div>
-        <a href="#go2offer" class="cta">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4.5 10 3.4v7.8H2V4.5Zm0 15 8 1.1v-7.7H2v6.6Zm9 1.2 11 1.5v-9.3H11v7.8Zm0-17.4v7.9h11V1.8L11 3.3Z"/></svg>
-          Play Free on Windows
-        </a>
-        <div class="chev r"><i></i><i></i><i></i></div>
-      </div>
-      <div class="skip-note">Or skip and play now</div>
-    </div>
   </div>
 </main>
 
 <script>
-  var steps=document.querySelectorAll('.step'), cur=0;
-  function go(i){
-    steps[cur].classList.remove('active'); cur=i; steps[cur].classList.add('active');
-    if(cur===2) scan();
-    if(cur===3){ document.getElementById('skip').style.display='none'; countdown(); }
-  }
-  document.querySelectorAll('[data-next]').forEach(function(b){ b.addEventListener('click',function(){ go(cur+1); }); });
-
-  function scan(){
-    var lines=document.querySelectorAll('#term div');
-    setTimeout(function(){ document.getElementById('bar').style.width='100%'; },50);
-    lines.forEach(function(l,k){ setTimeout(function(){ l.classList.add('show'); },450+k*500); });
-    setTimeout(function(){ go(3); },2700);
-  }
-
-  function countdown(){
-    var t=299, el=document.getElementById('timer');
-    setInterval(function(){ if(t>0)t--; el.textContent='0'+Math.floor(t/60)+':'+('0'+t%60).slice(-2); },1000);
-  }
+  // countdown under the CTA
+  var t=299, el=document.getElementById('timer');
+  setInterval(function(){ if(t>0)t--; el.textContent='0'+Math.floor(t/60)+':'+('0'+t%60).slice(-2); },1000);
 </script>
 </body>
 </html>
