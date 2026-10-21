@@ -22,7 +22,9 @@
   .scan{position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
 
   .topbar{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:16px 4vw}
-  .logo{width:clamp(110px,14vw,190px);filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
+  .brand{display:inline-flex;flex-direction:column;align-items:flex-start;padding:10px 14px 12px;background:rgba(11,11,12,.55);border-left:3px solid var(--yellow)}
+  .ark{font-family:'Oxanium',sans-serif;font-weight:800;font-size:clamp(11px,1.1vw,15px);letter-spacing:.55em;color:var(--white);margin-bottom:6px;text-shadow:0 2px 8px rgba(0,0,0,.8)}
+  .logo{width:clamp(120px,15vw,210px);display:block;filter:drop-shadow(0 3px 10px rgba(0,0,0,.7))}
   .tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--black);background:var(--yellow);padding:6px 10px}
   .tag i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e01a1a;margin-right:6px;animation:blink 1s infinite}
   @keyframes blink{50%{opacity:.2}}
@@ -98,7 +100,7 @@
   <div class="bg"></div><div class="shade"></div><div class="scan"></div>
 
   <div class="topbar">
-    <a href="#go2offer"><img class="logo" src="https://pub-f40ac40689ba4dc98e8fbd45d5a02c91.r2.dev/logo-endfield.png" alt="Arknights: Endfield"></a>
+    <a href="#go2offer" class="brand"><span class="ark">ARKNIGHTS</span><img class="logo" src="image/logo-endfield-v2.png" alt="Arknights: Endfield"></a>
     <span class="tag"><i></i>TALOS-II // LIVE</span>
   </div>
 
