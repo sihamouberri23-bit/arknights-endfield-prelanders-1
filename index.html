@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="wait">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,6 +76,20 @@
   .cta svg{width:1.1em;height:1.1em;flex:none}
   .note{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#cfcfcf}
   .note b{color:var(--yellow);font-weight:500}
+  .tr{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+  .lang{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--white);background:rgba(11,11,12,.7);border:1px solid rgba(255,255,255,.3);padding:6px 8px;cursor:pointer;outline:none}
+  .lang:focus,.lang:hover{border-color:var(--yellow)}
+  .lang option{background:#111;color:#fff}
+  /* non-latin scripts */
+  html[lang="zh-Hant"] body{--fx:'Noto Sans TC'}
+  html[lang="ja"] body{--fx:'Noto Sans JP'}
+  html[lang="ar"] body{--fx:'Noto Sans Arabic'}
+  html[lang="ru"] body{--fx:'Rubik'}
+  html[lang="zh-Hant"] :is(h1,.sub,.cta,.note,.kicker,.legal),html[lang="ja"] :is(h1,.sub,.cta,.note,.kicker,.legal),
+  html[lang="ar"] :is(h1,.sub,.cta,.note,.kicker,.legal),html[lang="ru"] :is(h1,.sub,.cta,.note,.kicker,.legal){font-family:var(--fx),sans-serif;font-weight:800}
+  html[lang="ar"] :is(h1,.sub,.cta,.note,.kicker,.legal){letter-spacing:0}
+  html[lang="ar"] .topbar{direction:ltr}
+  html.wait .panel,html.wait .legal{visibility:hidden}
   .legal{position:absolute;z-index:4;bottom:8px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.05em;padding:0 12px;pointer-events:none}
 
   @media (max-width:640px){
@@ -87,7 +101,7 @@
     .bg{background-position:62% 20%}
     .kicker{font-size:10px;letter-spacing:.18em}
   }
-  @media (max-width:640px){h1{font-size:28px}.sub{font-size:15px}.cta{font-size:20px;gap:12px;padding:20px 26px}}
+  @media (max-width:640px){h1{font-size:28px}.sub{font-size:15px}.cta{font-size:20px;gap:12px;padding:20px 26px;white-space:normal;text-align:center;justify-content:center;max-width:92vw}.lang{font-size:11px;padding:5px 6px}}
   @media (max-height:640px){.sub{display:none}.opts{margin-top:14px}}
   @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
@@ -98,27 +112,104 @@
 
   <div class="topbar">
     <a href="#go2offer" class="brand"><span class="ark">A R K N I G H T S</span><img class="logo" src="https://end.eliteplayhub.com/image/logo-endfield-v2.png" alt="Arknights: Endfield"></a>
-    <span class="tag"><i></i>TALOS-II // LIVE</span>
+    <div class="tr">
+      <span class="tag"><i></i>TALOS-II // LIVE</span>
+      <select id="lang" class="lang" aria-label="Language">
+        <option value="en">EN · English</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="ja">日本語</option>
+        <option value="de">DE · Deutsch</option>
+        <option value="fr">FR · Français</option>
+        <option value="ru">RU · Русский</option>
+        <option value="ar">العربية</option>
+      </select>
+    </div>
   </div>
 
   <div class="panel">
 
     <section class="step active">
-      <div class="kicker">// Ready</div>
-      <h1>Your game is <span>ready!</span></h1>
-      <p class="sub">Click below and play Arknights: Endfield free.</p>
+      <div class="kicker">// <span data-i18n="kicker">Ready</span></div>
+      <h1 data-i18n-html="h1">Your game is <span>ready!</span></h1>
+      <p class="sub" data-i18n="sub">Click below and play Arknights: Endfield free.</p>
       <div class="cta-wrap">
         <div class="chev"><i></i><i></i><i></i></div>
         <a href="#go2offer" class="cta">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 4.5 10 3.4v7.8H2V4.5Zm0 15 8 1.1v-7.7H2v6.6Zm9 1.2 11 1.5v-9.3H11v7.8Zm0-17.4v7.9h11V1.8L11 3.3Z"/></svg>
-          Play Free on Windows
+          <span data-i18n="cta">Play Free on Windows</span>
         </a>
         <div class="chev r"><i></i><i></i><i></i></div>
       </div>
-      <div class="note"><b>100% FREE</b> · No credit card · Instant play</div>
+      <div class="note" data-i18n-html="note"><b>100% FREE</b> · No credit card · Instant play</div>
     </section>
   </div>
-  <div class="legal">Unofficial promotional page. Arknights: Endfield is a trademark of its respective owners.</div>
+  <div class="legal" data-i18n="legal">Unofficial promotional page. Arknights: Endfield is a trademark of its respective owners.</div>
 </main>
+<script>
+(function(){
+  var T={
+    en:{t:"Arknights: Endfield – Play Free on Windows",kicker:"Ready",h1:"Your game is <span>ready!</span>",sub:"Click below and play Arknights: Endfield free.",cta:"Play Free on Windows",note:"<b>100% FREE</b> · No credit card · Instant play",legal:"Unofficial promotional page. Arknights: Endfield is a trademark of its respective owners."},
+    "zh-Hant":{t:"明日方舟：終末地 – 在 Windows 免費遊玩",kicker:"已就緒",h1:"你的遊戲<span>已就緒！</span>",sub:"點擊下方，免費遊玩《明日方舟：終末地》。",cta:"在 Windows 免費遊玩",note:"<b>100% 免費</b> · 無需信用卡 · 立即開玩",legal:"非官方宣傳頁面。《明日方舟：終末地》為其各自所有者之商標。"},
+    ja:{t:"アークナイツ：エンドフィールド – Windowsで無料プレイ",kicker:"準備完了",h1:"ゲームの<span>準備完了！</span>",sub:"下のボタンから『アークナイツ：エンドフィールド』を無料でプレイ。",cta:"Windowsで無料プレイ",note:"<b>完全無料</b> · クレジットカード不要 · すぐにプレイ",legal:"非公式のプロモーションページです。『アークナイツ：エンドフィールド』は各権利者の商標です。"},
+    de:{t:"Arknights: Endfield – Kostenlos auf Windows spielen",kicker:"Bereit",h1:"Dein Spiel ist <span>bereit!</span>",sub:"Klicke unten und spiele Arknights: Endfield kostenlos.",cta:"Kostenlos auf Windows spielen",note:"<b>100 % KOSTENLOS</b> · Keine Kreditkarte · Sofort spielen",legal:"Inoffizielle Werbeseite. Arknights: Endfield ist eine Marke der jeweiligen Inhaber."},
+    fr:{t:"Arknights: Endfield – Jouer gratuitement sur Windows",kicker:"Prêt",h1:"Ton jeu est <span>prêt !</span>",sub:"Clique ci-dessous et joue gratuitement à Arknights: Endfield.",cta:"Jouer gratuitement sur Windows",note:"<b>100 % GRATUIT</b> · Sans carte bancaire · Jeu instantané",legal:"Page promotionnelle non officielle. Arknights: Endfield est une marque de ses propriétaires respectifs."},
+    ru:{t:"Arknights: Endfield – Играй бесплатно на Windows",kicker:"Готово",h1:"Твоя игра <span>готова!</span>",sub:"Нажми ниже и играй в Arknights: Endfield бесплатно.",cta:"Играть бесплатно на Windows",note:"<b>100% БЕСПЛАТНО</b> · Без банковской карты · Мгновенный старт",legal:"Неофициальная промо-страница. Arknights: Endfield — товарный знак соответствующих владельцев."},
+    ar:{t:"Arknights: Endfield – العب مجاناً على Windows",kicker:"جاهز",h1:"لعبتك <span>جاهزة!</span>",sub:"اضغط بالأسفل والعب Arknights: Endfield مجاناً.",cta:"العب مجاناً على Windows",note:"<b>مجاني 100%</b> · بدون بطاقة بنكية · العب فوراً",legal:"صفحة ترويجية غير رسمية. Arknights: Endfield علامة تجارية لأصحابها."}
+  };
+  var FONTS={"zh-Hant":"Noto+Sans+TC:wght@500;800",ja:"Noto+Sans+JP:wght@500;800",ar:"Noto+Sans+Arabic:wght@500;800",ru:"Rubik:wght@500;800"};
+  // one language per country; arrays = multilingual country, pick by browser language
+  var GEO={TW:"zh-Hant",HK:"zh-Hant",MO:"zh-Hant",JP:"ja",DE:"de",AT:"de",LI:"de",FR:"fr",MC:"fr",RU:"ru",BY:"ru",
+    SA:"ar",AE:"ar",QA:"ar",KW:"ar",BH:"ar",OM:"ar",JO:"ar",IQ:"ar",SY:"ar",YE:"ar",LY:"ar",SD:"ar",PS:"ar",EG:"ar",
+    MA:["ar","fr"],DZ:["ar","fr"],TN:["ar","fr"],LB:["ar","fr","en"],CH:["de","fr"],BE:["fr","de"],LU:["fr","de"],CA:["en","fr"],KZ:["ru"]};
+
+  function norm(l){
+    if(!l) return null; l=String(l).toLowerCase();
+    if(l==="zh-hant"||l==="zh-tw"||l==="zh-hk"||l==="zh-mo"||l==="tw") return "zh-Hant";
+    var b=l.split(/[-_]/)[0];
+    return ({en:1,ja:1,de:1,fr:1,ru:1,ar:1})[b]?b:null;
+  }
+  function browserLangs(){ return (navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||""]).map(norm).filter(Boolean); }
+
+  var fontsLoaded={};
+  function apply(l){
+    var d=T[l]||T.en; if(!T[l]) l="en";
+    document.documentElement.lang=l; document.documentElement.dir=l==="ar"?"rtl":"ltr";
+    document.title=d.t;
+    document.querySelectorAll("[data-i18n]").forEach(function(e){ e.textContent=d[e.getAttribute("data-i18n")]; });
+    document.querySelectorAll("[data-i18n-html]").forEach(function(e){ e.innerHTML=d[e.getAttribute("data-i18n-html")]; });
+    document.getElementById("lang").value=l; document.documentElement.classList.remove("wait");
+    if(FONTS[l]&&!fontsLoaded[l]){ fontsLoaded[l]=1; var k=document.createElement("link"); k.rel="stylesheet"; k.href="https://fonts.googleapis.com/css2?family="+FONTS[l]+"&display=swap"; document.head.appendChild(k); }
+  }
+  function fromCountry(cc){
+    var g=GEO[(cc||"").toUpperCase()]; if(!g) return "en";
+    if(typeof g==="string") return g;
+    var bl=browserLangs(); for(var i=0;i<bl.length;i++){ if(g.indexOf(bl[i])>-1) return bl[i]; }
+    return g[0];
+  }
+  function getCountry(cb){
+    var done=false; function fin(c){ if(!done){ done=true; cb(c); } }
+    setTimeout(function(){ fin(null); },1200);
+    // Cloudflare trace (same origin) first, then a public geo API
+    fetch("/cdn-cgi/trace").then(function(r){ return r.ok?r.text():""; }).then(function(t){
+      var m=/loc=([A-Z]{2})/.exec(t); if(m) return fin(m[1]);
+      return fetch("https://get.geojs.io/v1/ip/country.json").then(function(r){ return r.json(); }).then(function(j){ fin(j&&j.country); });
+    }).catch(function(){
+      fetch("https://get.geojs.io/v1/ip/country.json").then(function(r){ return r.json(); }).then(function(j){ fin(j&&j.country); }).catch(function(){ fin(null); });
+    });
+  }
+
+  var sel=document.getElementById("lang");
+  sel.addEventListener("change",function(){ apply(sel.value); try{ localStorage.setItem("ef_lang",sel.value); }catch(e){} });
+
+  var q=norm(new URLSearchParams(location.search).get("lang"));
+  var saved=null; try{ saved=norm(localStorage.getItem("ef_lang")); }catch(e){}
+  if(q){ apply(q); return; }
+  if(saved){ apply(saved); return; }
+  getCountry(function(cc){
+    if(cc){ apply(fromCountry(cc)); return; }
+    var bl=browserLangs(); apply(bl[0]||"en");
+  });
+})();
+</script>
 </body>
 </html>
