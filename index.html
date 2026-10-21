@@ -76,7 +76,7 @@
   .cta svg{width:1.1em;height:1.1em;flex:none}
   .note{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:#cfcfcf}
   .note b{color:var(--yellow);font-weight:500}
-  .timer{color:var(--yellow)}
+  .legal{position:absolute;z-index:4;bottom:8px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.05em;padding:0 12px;pointer-events:none}
 
   @media (max-width:640px){
     .opts{grid-template-columns:1fr;gap:8px}
@@ -94,7 +94,7 @@
 </head>
 <body>
 <main class="stage">
-  <div class="bg"></div><div class="shade"></div><div class="scan"></div>
+  <a href="#go2offer" class="bg" aria-label="Play Arknights: Endfield free"></a><div class="shade"></div><div class="scan"></div>
 
   <div class="topbar">
     <a href="#go2offer" class="brand"><span class="ark">ARKNIGHTS</span><img class="logo" src="image/logo-endfield-v2.png" alt="Arknights: Endfield"></a>
@@ -115,15 +115,10 @@
         </a>
         <div class="chev r"><i></i><i></i><i></i></div>
       </div>
-      <div class="note"><b>100% FREE</b> · Offer ends in <span class="timer" id="timer">04:59</span></div>
+      <div class="note"><b>100% FREE</b> · No credit card · Instant play</div>
     </section>
   </div>
+  <div class="legal">Unofficial promotional page. Arknights: Endfield is a trademark of its respective owners.</div>
 </main>
-
-<script>
-  // countdown under the CTA
-  var t=299, el=document.getElementById('timer');
-  setInterval(function(){ if(t>0)t--; el.textContent='0'+Math.floor(t/60)+':'+('0'+t%60).slice(-2); },1000);
-</script>
 </body>
 </html>
